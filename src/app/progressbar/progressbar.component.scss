@@ -1,0 +1,26 @@
+.progress-bar {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 12px;
+  width: 100%;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 2px;
+  text-align: center;
+}
+
+.progress {
+  position: absolute;
+  height: 12px;
+  width: 50%;
+  background-color: lightskyblue;
+
+  border-width: 0px;
+  border-style: solid;
+  border-radius: 20px;
+}
+
+.text {
+  position: absolute;
+  font-size: 10px;
+}

@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.jokedisplay {
+  margin-top: 50px;
+  margin-bottom: 25px;
+  background-color: rgba(0, 0, 0, 0.1);
+  height: auto;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  border-width: 1px;
+}
+
+.setup {
+  min-height: 60px;
+}
+
+.punchline {
+  min-height: 60px;
+  margin-bottom: 30px;
+}
+
+.next {
+  width: 80px;
+  background-color: gray;
+  color: white;
+  margin: 15px;
+}
+
+.laugh {
+  width: 80px;
+  background-color: limegreen;
+  color: white;
+}
+
+.addFavorites {
+  width: 120px;
+  background-color: hotpink;
+  color: white;
+  margin: 15px;
+}
