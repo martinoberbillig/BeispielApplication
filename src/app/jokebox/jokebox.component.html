@@ -1,9 +1,11 @@
 <div class="container jokedisplay">
-  <div class="container setup">Dad, can you put my shoes on?</div>
-  <div class="container punchline">I don't think they'll fit me</div>
+  <div class="container setup">
+    <b>{{ joke.setup }}</b>
+  </div>
+  <div class="container punchline">{{ joke.punchline }}</div>
   <span class="buttons">
-    <button class="next">Next</button>
-    <button class="laugh">Laugh</button>
+    <button class="next" (click)="next()">Next</button>
+    <button class="laugh" (click)="laugh()">Laugh</button>
     <button class="addFavorites">Add to favorites</button>
   </span>
 </div>
