@@ -16,5 +16,11 @@ export const favoritesReducer = createReducer(
       ...state,
       jokes: [...state.jokes, joke],
     };
+  }),
+  on(removeFromFavorites, (state, joke) => {
+    return {
+      ...state, // Hier das Zustand-Objekt zurückgeben
+      jokes: state.jokes.filter((item) => item.id !== joke.id), // Hier das gefilterte Array zuweisen
+    };
   })
 );

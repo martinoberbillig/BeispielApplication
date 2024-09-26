@@ -7,11 +7,12 @@ import { Observable } from 'rxjs';
 import { selectCount } from '../states/counter/counter.selectors';
 import { incrementLaugh } from '../states/counter/counter.actions';
 import { addToFavorites } from '../states/favorites/favorites.actions';
+import { JokeCardComponent } from '../favorites/joke-card/joke-card.component';
 
 @Component({
   selector: 'app-joke-box',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, JokeCardComponent],
   templateUrl: './jokebox.component.html',
   styleUrl: './jokebox.component.scss',
 })
