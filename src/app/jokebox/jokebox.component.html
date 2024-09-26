@@ -1,11 +1,11 @@
 <div class="container jokedisplay">
   <div class="container setup">
-    <b>{{ joke.setup }}</b>
+    <b>{{ (joke$ | async)?.setup }}</b>
   </div>
-  <div class="container punchline">{{ joke.punchline }}</div>
+  <div class="container punchline">{{ (joke$ | async)?.punchline }}</div>
   <span class="buttons">
     <button class="next" (click)="next()">Next</button>
     <button class="laugh" (click)="laugh()">Laugh</button>
-    <button class="addFavorites">Add to favorites</button>
+    <button class="addFavorites" (click)="addToFavs()">Add to favorites</button>
   </span>
 </div>

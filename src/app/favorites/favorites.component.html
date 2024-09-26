@@ -1,7 +1,13 @@
 <div class="container">
   <h3>My favorite Jokes</h3>
-  <div class="collecton">
-    <app-favorite-card></app-favorite-card>
-    <app-favorite-card></app-favorite-card>
+  <button (click)="click()"></button>
+  <div class="collecton" *ngFor="let joke of jokes$ | async">
+    <div class="joke-card">
+      <button class="close-button">x</button>
+      <p>
+        <b>{{ joke.setup }}</b>
+      </p>
+      <p>{{ joke.punchline }}</p>
+    </div>
   </div>
 </div>
