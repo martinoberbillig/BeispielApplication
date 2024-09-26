@@ -1,14 +1,20 @@
 import { createReducer, on } from '@ngrx/store';
 import { addToFavorites, removeFromFavorites } from './favorites.actions';
-import { Joke } from '../appstate';
+import { CollectionState, Joke } from '../appstate';
 
-export const initialFavoritesState: Joke[] = [];
+export const initialFavoritesState: CollectionState = {
+  jokes: [],
+};
 
 export const favoritesReducer = createReducer(
   initialFavoritesState,
   on(addToFavorites, (state, joke) => {
-    if (state.indexOf(joke.id) > -1) return state;
-
-    return [...state, joke];
+    if (state.jokes.find((element) => element.id === joke.id)) {
+      return state;
+    }
+    return {
+      ...state,
+      jokes: [...state.jokes, joke],
+    };
   })
 );

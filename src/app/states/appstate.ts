@@ -14,5 +14,5 @@ export interface CollectionState {
 export interface Joke {
   setup: string;
   punchline: string;
-  id: any;
+  id: number;
 }

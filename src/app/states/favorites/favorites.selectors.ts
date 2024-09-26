@@ -1,9 +1,11 @@
-import { createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { AppState, CollectionState } from '../appstate';
 
-export const selectCollectionState = (state: AppState) => state.collectionState;
+export const selectCollectionState =
+  createFeatureSelector<CollectionState>('FavoriteList');
 
-export const selectFavoriteList = createSelector(
+// Selector für die Witze
+export const selectJokes = createSelector(
   selectCollectionState,
-  (state) => state.jokes
+  (state: CollectionState) => state.jokes
 );

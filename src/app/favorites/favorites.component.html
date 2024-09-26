@@ -1,6 +1,13 @@
 <div class="container">
   <h3>My favorite Jokes</h3>
-  <button (click)="click()"></button>
+
+  <div class="joke-card">
+    <button class="close-button">x</button>
+    <p>
+      <b>How are false teeth like stars?</b>
+    </p>
+    <p>They come out at night!</p>
+  </div>
   <div class="collecton" *ngFor="let joke of jokes$ | async">
     <div class="joke-card">
       <button class="close-button">x</button>
