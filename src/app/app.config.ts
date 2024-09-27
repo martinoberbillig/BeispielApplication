@@ -11,6 +11,8 @@ import { provideEffects } from '@ngrx/effects';
 import { provideState, provideStore } from '@ngrx/store';
 import { laughReducer } from './states/counter/counter.reducers';
 import { favoritesReducer } from './states/favorites/favorites.reducers';
+import { loadJokeReducer } from './states/loading/loadingJoke.reducer';
+import { LoadingJokeEffect } from './states/loading/loadingjoke.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,7 +21,8 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideState({ name: 'laughCounter', reducer: laughReducer }),
     provideState({ name: 'FavoriteList', reducer: favoritesReducer }),
-    provideEffects(),
+    provideState({ name: 'loadJoke', reducer: loadJokeReducer }),
+    provideEffects(LoadingJokeEffect),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideEffects(),
   ],

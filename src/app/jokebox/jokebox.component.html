@@ -1,8 +1,14 @@
 <div class="container jokedisplay">
+  @if (error$ | async) {
+  <h2>Loading Failed</h2>
+  } @if (isloading$ |async) {
+  <h2>Loading...</h2>
+  } @else{
   <div class="container setup">
     <b>{{ (joke$ | async)?.setup }}</b>
   </div>
   <div class="container punchline">{{ (joke$ | async)?.punchline }}</div>
+  }
   <span class="buttons">
     <button class="next" (click)="next()">Next</button>
     <button class="laugh" (click)="laugh()">Laugh</button>
