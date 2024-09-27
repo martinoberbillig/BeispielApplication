@@ -21,7 +21,13 @@
   min-height: 60px;
 }
 
-.punchline {
+.punchline-hidden {
+  min-height: 60px;
+  margin-bottom: 30px;
+  visibility: hidden;
+}
+
+.punchline-show {
   min-height: 60px;
   margin-bottom: 30px;
 }

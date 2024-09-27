@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { JokeApiService } from '../services/joke.api.service';
 import { CommonModule } from '@angular/common';
 import { AppState, Joke } from '../states/appstate';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, timeout } from 'rxjs';
 import { selectCount } from '../states/counter/counter.selectors';
 import { incrementLaugh } from '../states/counter/counter.actions';
 import { addToFavorites } from '../states/favorites/favorites.actions';
@@ -23,8 +22,9 @@ export class JokeBoxComponent {
   laughCount$: Observable<number>;
   error$: Observable<string | null>;
   isloading$: Observable<boolean>;
+  showPunchline: boolean = false;
 
-  constructor(private jokeApi: JokeApiService, private store: Store<AppState>) {
+  constructor(private store: Store<AppState>) {
     this.isloading$ = this.store.select(LoadingJokeSelectors.selectIsLoading);
     this.laughCount$ = this.store.select(selectCount);
     this.joke$ = this.store.select(LoadingJokeSelectors.selecteJoke);
@@ -33,7 +33,11 @@ export class JokeBoxComponent {
   }
 
   next() {
+    this.showPunchline = false;
     this.store.dispatch(LoadingJokeActions.loadJoke());
+    setTimeout(() => {
+      this.showPunchline = true;
+    }, 3000);
   }
 
   laugh() {
@@ -41,8 +45,10 @@ export class JokeBoxComponent {
   }
 
   addToFavs() {
-    this.joke$.subscribe((obj) => {
-      this.store.dispatch(addToFavorites(obj));
-    });
+    this.joke$
+      .subscribe((obj) => {
+        this.store.dispatch(addToFavorites(obj));
+      })
+      .unsubscribe();
   }
 }

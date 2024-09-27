@@ -18,6 +18,6 @@ export class ProgressbarComponent {
   constructor(private store: Store<AppState>) {
     this.progress$ = this.store
       .select(selectCount)
-      .pipe(map((value) => Math.min(value * 10, 100)));
+      .pipe(map((value) => Math.min(value * 20, 100)));
   }
 }

@@ -1,26 +1,18 @@
 import { createReducer, on } from '@ngrx/store';
 import { addToFavorites, removeFromFavorites } from './favorites.actions';
 import { CollectionState, Joke } from '../appstate';
+import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
 
-export const initialFavoritesState: CollectionState = {
-  jokes: [],
-};
+export const adapter: EntityAdapter<Joke> = createEntityAdapter<Joke>();
+
+export const initialFavoritesState: CollectionState = adapter.getInitialState();
 
 export const favoritesReducer = createReducer(
   initialFavoritesState,
   on(addToFavorites, (state, joke) => {
-    if (state.jokes.find((element) => element.id === joke.id)) {
-      return state;
-    }
-    return {
-      ...state,
-      jokes: [...state.jokes, joke],
-    };
+    return adapter.addOne(joke, state);
   }),
-  on(removeFromFavorites, (state, joke) => {
-    return {
-      ...state, // Hier das Zustand-Objekt zurückgeben
-      jokes: state.jokes.filter((item) => item.id !== joke.id), // Hier das gefilterte Array zuweisen
-    };
+  on(removeFromFavorites, (state, { id }) => {
+    return adapter.removeOne(id, state);
   })
 );

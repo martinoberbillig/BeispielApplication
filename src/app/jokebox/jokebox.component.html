@@ -7,8 +7,16 @@
   <div class="container setup">
     <b>{{ (joke$ | async)?.setup }}</b>
   </div>
-  <div class="container punchline">{{ (joke$ | async)?.punchline }}</div>
-  }
+
+  @if (showPunchline) {
+  <div class="container punchline-show">
+    {{ (joke$ | async)?.punchline }}
+  </div>
+  } @else {
+  <div class="container punchline-hidden">
+    {{ (joke$ | async)?.punchline }}
+  </div>
+  }}
   <span class="buttons">
     <button class="next" (click)="next()">Next</button>
     <button class="laugh" (click)="laugh()">Laugh</button>

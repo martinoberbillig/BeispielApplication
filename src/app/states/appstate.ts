@@ -1,3 +1,5 @@
+import { EntityState } from '@ngrx/entity';
+
 export interface AppState {
   laughCounter: LaughState;
   collectionState: CollectionState;
@@ -8,9 +10,7 @@ export interface LaughState {
   count: number;
 }
 
-export interface CollectionState {
-  jokes: Joke[];
-}
+export interface CollectionState extends EntityState<Joke> {}
 
 export interface Joke {
   setup: string;
