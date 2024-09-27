@@ -11,11 +11,9 @@ export class JokeApiService {
   constructor() {}
 
   getJoke(): Observable<Joke> {
-    // Hier wird ein Promise in ein Observable umgewandelt
     return from(
       fetch('https://official-joke-api.appspot.com/random_joke').then(
         (response) => {
-          // Überprüfen, ob die Antwort erfolgreich ist
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }

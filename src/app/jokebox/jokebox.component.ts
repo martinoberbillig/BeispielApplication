@@ -22,12 +22,14 @@ export class JokeBoxComponent {
   joke$: Observable<Joke>;
   laughCount$: Observable<number>;
   error$: Observable<string | null>;
+  isloading$: Observable<boolean>;
 
   constructor(private jokeApi: JokeApiService, private store: Store<AppState>) {
-    this.next();
+    this.isloading$ = this.store.select(LoadingJokeSelectors.selectIsLoading);
     this.laughCount$ = this.store.select(selectCount);
     this.joke$ = this.store.select(LoadingJokeSelectors.selecteJoke);
     this.error$ = this.store.select(LoadingJokeSelectors.selecteError);
+    this.next();
   }
 
   next() {

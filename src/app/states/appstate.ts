@@ -19,6 +19,7 @@ export interface Joke {
 }
 
 export interface LoadingJokeState {
+  isLoading: boolean;
   joke: Joke;
   error: string | null;
 }

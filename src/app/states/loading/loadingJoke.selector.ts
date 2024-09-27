@@ -13,3 +13,8 @@ export const selecteError = createSelector(
   selectLoadingJokeFeature,
   (state: LoadingJokeState) => state.error
 );
+
+export const selectIsLoading = createSelector(
+  selectLoadingJokeFeature,
+  (state: LoadingJokeState) => state.isLoading
+);

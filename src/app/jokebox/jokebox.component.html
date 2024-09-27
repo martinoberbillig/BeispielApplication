@@ -1,8 +1,9 @@
 <div class="container jokedisplay">
   @if (error$ | async) {
   <h2>Loading Failed</h2>
-  } @else {
-
+  } @if (isloading$ |async) {
+  <h2>Loading...</h2>
+  } @else{
   <div class="container setup">
     <b>{{ (joke$ | async)?.setup }}</b>
   </div>
