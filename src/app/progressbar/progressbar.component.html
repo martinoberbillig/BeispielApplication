@@ -1,4 +1,11 @@
+<span class="goal-message">
+  <span class="left">daily goal:</span>
+
+  <span class="right" *ngIf="(progress$ | async) === 100"
+    ><b>congratulations 🎉</b></span
+  >
+</span>
 <div class="progress-bar">
-  <div id="progress"></div>
-  <span class="text">{{ progress$ | async }} /8</span>
+  <div id="progress" [style.width.%]="progress$ | async"></div>
+  <span class="text">{{ progress$ | async }} /100%</span>
 </div>

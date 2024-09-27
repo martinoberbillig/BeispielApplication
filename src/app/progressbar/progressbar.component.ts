@@ -16,6 +16,8 @@ export class ProgressbarComponent {
   progress$: Observable<number>;
 
   constructor(private store: Store<AppState>) {
-    this.progress$ = this.store.select(selectCount);
+    this.progress$ = this.store
+      .select(selectCount)
+      .pipe(map((value) => Math.min(value * 10, 100)));
   }
 }
