@@ -1,7 +1,7 @@
 <div class="container">
   <h3>My favorite Jokes</h3>
-  <div class="collecton">
-    <app-favorite-card></app-favorite-card>
-    <app-favorite-card></app-favorite-card>
+
+  <div class="collecton" *ngFor="let joke of jokes$ | async">
+    <app-joke-card [joke]="joke"></app-joke-card>
   </div>
 </div>
